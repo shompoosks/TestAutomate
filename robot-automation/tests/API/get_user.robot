@@ -5,7 +5,7 @@ Resource   ../../resources/api_keywords.robot
 *** Test Cases ***
 Get user profile success
     Create API Session     https://reqres.in  reqres-free-v1
-    ${resp}=    GET On Session    api    /api/users/12
+    ${resp}=    GET On Session    api    /api/users/1
     Log Full Response    ${resp}
     Should Be Equal As Integers    ${resp.status_code}    200
 

@@ -21,10 +21,10 @@ Log Full Response
 
 Verify get user profile api will return correct data
     [Arguments]    ${data}
-    Should Be Equal As Integers    ${data['id']}       12
-    Should Be Equal    ${data['email']}                rachel.howell@reqres.in
-    Should Be Equal    ${data['first_name']}           Rachel
-    Should Be Equal    ${data['last_name']}            Howell
-    Should Be Equal    ${data['avatar']}               https://reqres.in/img/faces/12-image.jpg
+    Should Be Equal As Integers    ${data['id']}       1
+    Should Be Equal    ${data['email']}                george.bluth@reqres.in
+    Should Be Equal    ${data['first_name']}           George
+    Should Be Equal    ${data['last_name']}            Bluth
+    Should Be Equal    ${data['avatar']}               https://reqres.in/img/faces/1-image.jpg
 
 
