@@ -1,12 +1,16 @@
 pipeline {
     agent any
 
-    environment {
-        // ชื่อโฟลเดอร์ผลลัพธ์แบบมีเวลา ป้องกันทับ
-        REPORT_DIR = "results_${new Date().format('yyyyMMdd_HHmmss')}"
-    }
-
     stages {
+        stage('Set timestamp') {
+            steps {
+                script {
+                    // สร้างชื่อโฟลเดอร์ report แบบมีเวลา
+                    env.REPORT_DIR = "results_${new Date().format('yyyyMMdd_HHmmss')}"
+                    echo "📁 Report directory: ${env.REPORT_DIR}"
+                }
+            }
+        }
 
         stage('Checkout Code From Git') {
             steps {
@@ -16,61 +20,70 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                dir('TestAutomate') {
-                    sh '''
-                        python3 -m venv venv
-                        . venv/bin/activate
-                        pip install --upgrade pip
-                        pip install -r requirements.txt
-                    '''
-                }
+                // อยู่ที่ root ของ repo เลย ไม่ต้อง dir('TestAutomate')
+                sh '''#!/bin/bash
+                    echo "current dir: $(pwd)"
+
+                    # ถ้ามี venv อยู่แล้วให้ใช้
+                    if [ -d "venv" ]; then
+                        source venv/bin/activate
+                    elif [ -d ".venv" ]; then
+                        source .venv/bin/activate
+                    else
+                        echo "no venv found, installing to system user"
+                    fi
+
+                    python3 --version || true
+                    pip3 install --upgrade pip
+                    pip3 install -r requirements.txt
+                '''
             }
         }
 
         stage('Run UI/Robot Tests') {
             steps {
-                dir('TestAutomate') {
-                    sh """
-                        . venv/bin/activate
-                        robot -d ${REPORT_DIR} robot-automation/tests/web-no2/login_web.robot
-                    """
-                }
+                sh """#!/bin/bash
+                    # เปิด venv อีกครั้งเพื่อความชัวร์
+                    if [ -d "venv" ]; then
+                        source venv/bin/activate
+                    elif [ -d ".venv" ]; then
+                        source .venv/bin/activate
+                    fi
+
+                    robot -d ${REPORT_DIR} robot-automation/tests/web-no2/login_web.robot
+                """
             }
         }
 
         stage('Run API Tests') {
             when {
-                expression { fileExists('TestAutomate/run_api.sh') }
+                expression { fileExists('run_api.sh') }
             }
             steps {
-                dir('TestAutomate') {
-                    sh """
-                        . venv/bin/activate
-                        chmod +x run_api.sh
-                        ./run_api.sh
-                    """
-                }
+                sh """#!/bin/bash
+                    if [ -d "venv" ]; then
+                        source venv/bin/activate
+                    elif [ -d ".venv" ]; then
+                        source .venv/bin/activate
+                    fi
+
+                    chmod +x run_api.sh
+                    ./run_api.sh
+                """
             }
         }
 
         stage('Publish Robot Report') {
             steps {
-                // ถ้าใช้ Robot Framework Plugin ใน Jenkins
-                robot outputPath: "TestAutomate/${REPORT_DIR}"
-
-                // หรือจะ publish html ตรง ๆ
-                publishHTML(target: [
-                    reportDir: "TestAutomate/${REPORT_DIR}",
-                    reportFiles: 'report.html',
-                    reportName: 'Robot Report'
-                ])
+                robot outputPath: "${REPORT_DIR}"
             }
         }
     }
 
     post {
         always {
-            archiveArtifacts artifacts: "TestAutomate/${REPORT_DIR}/**", fingerprint: true
+            // เก็บ report เข้ากับ build
+            archiveArtifacts artifacts: "${REPORT_DIR}/**", fingerprint: true
         }
         failure {
             echo "Test failed. Please check report.html/log.html in the build artifacts."
