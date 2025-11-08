@@ -22,20 +22,12 @@ pipeline {
             steps {
                 // อยู่ที่ root ของ repo เลย ไม่ต้อง dir('TestAutomate')
                 sh '''#!/bin/bash
-                    echo "current dir: $(pwd)"
-
-                    # ถ้ามี venv อยู่แล้วให้ใช้
-                    if [ -d "venv" ]; then
-                        source venv/bin/activate
-                    elif [ -d ".venv" ]; then
-                        source .venv/bin/activate
-                    else
-                        echo "no venv found, installing to system user"
-                    fi
-
-                    python3 --version || true
-                    pip3 install --upgrade pip
-                    pip3 install -r requirements.txt
+                    set -e
+                    echo "📦 create venv"
+                    python3 -m venv venv
+                    source venv/bin/activate
+                    python -m pip install --upgrade pip
+                    pip install -r requirements.txt
                 '''
             }
         }
@@ -43,13 +35,8 @@ pipeline {
         stage('Run UI/Robot Tests') {
             steps {
                 sh """#!/bin/bash
-                    # เปิด venv อีกครั้งเพื่อความชัวร์
-                    if [ -d "venv" ]; then
-                        source venv/bin/activate
-                    elif [ -d ".venv" ]; then
-                        source .venv/bin/activate
-                    fi
-
+                    set -e
+                    source venv/bin/activate
                     robot -d ${REPORT_DIR} robot-automation/tests/web-no2/login_web.robot
                 """
             }
