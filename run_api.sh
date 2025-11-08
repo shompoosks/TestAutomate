@@ -4,8 +4,7 @@ outdir="results/api_${timestamp}"
 
 mkdir -p "$outdir"
 
-robot -d "$outdir" tests/api/get_user
+robot -d "$outdir" tests/api/get_user.robot
 
 echo "Test Completed!"
 echo "Report: $outdir/report.html"
-open "$outdir/report.html"

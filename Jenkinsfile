@@ -47,16 +47,14 @@ pipeline {
                 expression { fileExists('run_api.sh') }
             }
             steps {
-                sh """#!/bin/bash
-                    if [ -d "venv" ]; then
+                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                    sh """#!/bin/bash
+                        set -e
                         source venv/bin/activate
-                    elif [ -d ".venv" ]; then
-                        source .venv/bin/activate
-                    fi
-
-                    chmod +x run_api.sh
-                    ./run_api.sh
-                """
+                        chmod +x run_api.sh
+                        ./run_api.sh
+                    """
+                }
             }
         }
 
