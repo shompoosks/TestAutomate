@@ -1,0 +1,5 @@
+{
+    "python.defaultInterpreterPath": "./venv/bin/python",
+    "python.analysis.extraPaths": ["./venv/lib/python3.14/site-packages"],
+    "python.defaultInterpreterPath": "/Users/wipaweesukkasem/Test_Automate/TestAutomate/venv/bin/python"
+}

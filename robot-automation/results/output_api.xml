@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.14.0rc3 on darwin)" generated="2025-11-07T18:10:26.477181" rpa="false" schemaversion="5">
+<suite id="s1" name="Get User" source="/Users/wipaweesukkasem/Test_Automate/TestAutomate/robot-automation/tests/API/get_user.robot">
+<test id="s1-t1" name="Get user profile success" line="6">
+<kw name="Create API Session" owner="api_keywords">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-07T18:10:26.524905" level="INFO">${headers} = {'x-api-key': 'reqres-free-v1'}</msg>
+<var>${headers}</var>
+<arg>x-api-key=${api_key}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.524786" elapsed="0.000137"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-11-07T18:10:26.525094" level="INFO">Creating Session using : alias=api, url=https://reqres.in, headers={'x-api-key': 'reqres-free-v1'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${base_url}</arg>
+<arg>headers=${headers}</arg>
+<arg>verify=${False}</arg>
+<arg>disable_warnings=${True}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-11-07T18:10:26.524970" elapsed="0.000199"/>
+</kw>
+<arg>https://reqres.in</arg>
+<arg>reqres-free-v1</arg>
+<status status="PASS" start="2025-11-07T18:10:26.524530" elapsed="0.000665"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-11-07T18:10:26.649823" level="INFO">GET Request : url=https://reqres.in/api/users/1 
+ path_url=/api/users/1 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'x-api-key': 'reqres-free-v1'} 
+ body=None 
+ </msg>
+<msg time="2025-11-07T18:10:26.649951" level="INFO">GET Response : url=https://reqres.in/api/users/1 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 07 Nov 2025 11:10:26 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key', 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Origin': 'http://localhost:5173', 'Etag': 'W/"334-JOZgDGSMKFdcho3+278oIhfV1XI"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Ratelimit-Limit': '100', 'Ratelimit-Policy': '100;w=60', 'Ratelimit-Remaining': '98', 'Ratelimit-Reset': '60', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=hSntz0qRs05VZMNzjHT5cyofwcygJxcGfia%2BAbMNoF0%3D\\u0026sid=c4c9725f-1ab0-44d8-820f-430df2718e11\\u0026ts=1762512086"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=hSntz0qRs05VZMNzjHT5cyofwcygJxcGfia%2BAbMNoF0%3D&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;ts=1762512086"', 'Server': 'cloudflare', 'Vary': 'Origin, accept-encoding', 'Via': '1.1 heroku-router', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Powered-By': 'ReqRes.in - Deploy backends in 30 seconds', 'X-Reqres-Docs': 'https://reqres.in', 'X-Reqres-Message': 'This API is powered by ReqRes. Deploy your own backend in 30 seconds!', 'X-Reqres-Templates': 'https://app.reqres.in/templates', 'X-Reqres-Upgrade': 'https://app.reqres.in/upgrade', 'X-Request-Id': '0f1c1fa0-9ed9-ea24-0066-382f36abd1c1', 'X-Xss-Protection': '1; mode=block', 'Age': '1740', 'Cache-Control': 'max-age=14400', 'cf-cache-status': 'HIT', 'Content-Encoding': 'gzip', 'CF-RAY': '99ac6258887d9c5d-SIN'} 
+ body={"data":{"id":1,"email":"george.bluth@reqres.in","first_name":"George","last_name":"Bluth","avatar":"https://reqres.in/img/faces/1-image.jpg"},"support":{"url":"https://contentcaddy.io?utm_source=reqres&amp;utm_medium=json&amp;utm_campaign=referral","text":"Tired of writing endless social media content? Let Content Caddy generate it for you."},"_meta":{"powered_by":"🚀 ReqRes - Deploy backends in 30 seconds","upgrade_url":"https://app.reqres.in/upgrade","docs_url":"https://reqres.in","template_gallery":"https://app.reqres.in/templates","message":"This API is powered by ReqRes. Deploy your own backend in 30 seconds!","features":["30 Second Backend Templates","Custom API Endpoints","Data Persistence","Real-time Analytics"],"upgrade_cta":"Upgrade to Pro for unlimited requests, custom endpoints, and data persistence"}} 
+ </msg>
+<msg time="2025-11-07T18:10:26.650078" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>/api/users/1</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.525248" elapsed="0.124848"/>
+</kw>
+<kw name="Log Full Response" owner="api_keywords">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-07T18:10:26.650776" level="INFO">STATUS: 200</msg>
+<arg>STATUS: ${resp.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.650487" elapsed="0.000314"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-07T18:10:26.651073" level="INFO">HEADERS: {'Date': 'Fri, 07 Nov 2025 11:10:26 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key', 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Origin': 'http://localhost:5173', 'Etag': 'W/"334-JOZgDGSMKFdcho3+278oIhfV1XI"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Ratelimit-Limit': '100', 'Ratelimit-Policy': '100;w=60', 'Ratelimit-Remaining': '98', 'Ratelimit-Reset': '60', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=hSntz0qRs05VZMNzjHT5cyofwcygJxcGfia%2BAbMNoF0%3D\\u0026sid=c4c9725f-1ab0-44d8-820f-430df2718e11\\u0026ts=1762512086"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=hSntz0qRs05VZMNzjHT5cyofwcygJxcGfia%2BAbMNoF0%3D&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;ts=1762512086"', 'Server': 'cloudflare', 'Vary': 'Origin, accept-encoding', 'Via': '1.1 heroku-router', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Powered-By': 'ReqRes.in - Deploy backends in 30 seconds', 'X-Reqres-Docs': 'https://reqres.in', 'X-Reqres-Message': 'This API is powered by ReqRes. Deploy your own backend in 30 seconds!', 'X-Reqres-Templates': 'https://app.reqres.in/templates', 'X-Reqres-Upgrade': 'https://app.reqres.in/upgrade', 'X-Request-Id': '0f1c1fa0-9ed9-ea24-0066-382f36abd1c1', 'X-Xss-Protection': '1; mode=block', 'Age': '1740', 'Cache-Control': 'max-age=14400', 'cf-cache-status': 'HIT', 'Content-Encoding': 'gzip', 'CF-RAY': '99ac6258887d9c5d-SIN'}</msg>
+<arg>HEADERS: ${resp.headers}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.650855" elapsed="0.000249"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-07T18:10:26.651697" level="INFO">BODY: {"data":{"id":1,"email":"george.bluth@reqres.in","first_name":"George","last_name":"Bluth","avatar":"https://reqres.in/img/faces/1-image.jpg"},"support":{"url":"https://contentcaddy.io?utm_source=reqres&amp;utm_medium=json&amp;utm_campaign=referral","text":"Tired of writing endless social media content? Let Content Caddy generate it for you."},"_meta":{"powered_by":"🚀 ReqRes - Deploy backends in 30 seconds","upgrade_url":"https://app.reqres.in/upgrade","docs_url":"https://reqres.in","template_gallery":"https://app.reqres.in/templates","message":"This API is powered by ReqRes. Deploy your own backend in 30 seconds!","features":["30 Second Backend Templates","Custom API Endpoints","Data Persistence","Real-time Analytics"],"upgrade_cta":"Upgrade to Pro for unlimited requests, custom endpoints, and data persistence"}}</msg>
+<arg>BODY: ${resp.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.651151" elapsed="0.000599"/>
+</kw>
+<arg>${resp}</arg>
+<status status="PASS" start="2025-11-07T18:10:26.650290" elapsed="0.001504"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-07T18:10:26.652111" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.651876" elapsed="0.000271"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-07T18:10:26.652411" level="INFO">${json} = {'data': {'id': 1, 'email': 'george.bluth@reqres.in', 'first_name': 'George', 'last_name': 'Bluth', 'avatar': 'https://reqres.in/img/faces/1-image.jpg'}, 'support': {'url': 'https://contentcaddy.io?ut...</msg>
+<var>${json}</var>
+<arg>$resp.json()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.652227" elapsed="0.000201"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-11-07T18:10:26.652579" level="INFO">${data} = {'id': 1, 'email': 'george.bluth@reqres.in', 'first_name': 'George', 'last_name': 'Bluth', 'avatar': 'https://reqres.in/img/faces/1-image.jpg'}</msg>
+<var>${data}</var>
+<arg>${json}</arg>
+<arg>data</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.652495" elapsed="0.000095"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nSTATUS: ${resp.status_code}\nBODY: ${data}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.652646" elapsed="0.000223"/>
+</kw>
+<kw name="Verify get user profile api will return correct data" owner="api_keywords">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-07T18:10:26.653280" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${data['id']}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.653078" elapsed="0.000229"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${data['email']}</arg>
+<arg>george.bluth@reqres.in</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.653359" elapsed="0.000181"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${data['first_name']}</arg>
+<arg>George</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.653587" elapsed="0.000175"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${data['last_name']}</arg>
+<arg>Bluth</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.653806" elapsed="0.000172"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${data['avatar']}</arg>
+<arg>https://reqres.in/img/faces/1-image.jpg</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.654025" elapsed="0.000172"/>
+</kw>
+<arg>${data}</arg>
+<status status="PASS" start="2025-11-07T18:10:26.652960" elapsed="0.001264"/>
+</kw>
+<status status="PASS" start="2025-11-07T18:10:26.524286" elapsed="0.130007"/>
+</test>
+<test id="s1-t2" name="Get user profile but user not found" line="17">
+<kw name="Create API Session" owner="api_keywords">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-07T18:10:26.654781" level="INFO">${headers} = {'x-api-key': 'reqres-free-v1'}</msg>
+<var>${headers}</var>
+<arg>x-api-key=${api_key}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.654672" elapsed="0.000122"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-11-07T18:10:26.654998" level="INFO">Creating Session using : alias=api, url=https://reqres.in, headers={'x-api-key': 'reqres-free-v1'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${base_url}</arg>
+<arg>headers=${headers}</arg>
+<arg>verify=${False}</arg>
+<arg>disable_warnings=${True}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-11-07T18:10:26.654842" elapsed="0.000256"/>
+</kw>
+<arg>https://reqres.in</arg>
+<arg>reqres-free-v1</arg>
+<status status="PASS" start="2025-11-07T18:10:26.654556" elapsed="0.000573"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-11-07T18:10:27.181605" level="INFO">GET Request : url=https://reqres.in/api/users/1234 
+ path_url=/api/users/1234 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'x-api-key': 'reqres-free-v1'} 
+ body=None 
+ </msg>
+<msg time="2025-11-07T18:10:27.181918" level="INFO">GET Response : url=https://reqres.in/api/users/1234 
+ status=404, reason=Not Found 
+ headers={'Date': 'Fri, 07 Nov 2025 11:10:27 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key', 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Origin': 'http://localhost:5173', 'Etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Ratelimit-Limit': '100', 'Ratelimit-Policy': '100;w=60', 'Ratelimit-Remaining': '98', 'Ratelimit-Reset': '60', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=cwvx6xVijcyQueJYSqU2mbo5IdfsuGrZOk1ILF%2B4kJY%3D\\u0026sid=c4c9725f-1ab0-44d8-820f-430df2718e11\\u0026ts=1762513827"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=cwvx6xVijcyQueJYSqU2mbo5IdfsuGrZOk1ILF%2B4kJY%3D&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;ts=1762513827"', 'Server': 'cloudflare', 'Vary': 'Origin, accept-encoding', 'Via': '1.1 heroku-router', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Powered-By': 'ReqRes.in - Deploy backends in 30 seconds', 'X-Reqres-Docs': 'https://reqres.in', 'X-Reqres-Message': 'This API is powered by ReqRes. Deploy your own backend in 30 seconds!', 'X-Reqres-Templates': 'https://app.reqres.in/templates', 'X-Reqres-Upgrade': 'https://app.reqres.in/upgrade', 'X-Request-Id': '103596a7-e794-08cc-2fc6-4a1668234304', 'X-Xss-Protection': '1; mode=block', 'Cache-Control': 'max-age=14400', 'cf-cache-status': 'EXPIRED', 'Content-Encoding': 'gzip', 'CF-RAY': '99ac625948fbce02-SIN'} 
+ body={} 
+ </msg>
+<msg time="2025-11-07T18:10:27.182307" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>/api/users/1234</arg>
+<arg>expected_status=404</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-11-07T18:10:26.655186" elapsed="0.527194"/>
+</kw>
+<kw name="Log Full Response" owner="api_keywords">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-07T18:10:27.184404" level="INFO">STATUS: 404</msg>
+<arg>STATUS: ${resp.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-07T18:10:27.183803" elapsed="0.000653"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-07T18:10:27.184994" level="INFO">HEADERS: {'Date': 'Fri, 07 Nov 2025 11:10:27 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key', 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Origin': 'http://localhost:5173', 'Etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Ratelimit-Limit': '100', 'Ratelimit-Policy': '100;w=60', 'Ratelimit-Remaining': '98', 'Ratelimit-Reset': '60', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=cwvx6xVijcyQueJYSqU2mbo5IdfsuGrZOk1ILF%2B4kJY%3D\\u0026sid=c4c9725f-1ab0-44d8-820f-430df2718e11\\u0026ts=1762513827"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=cwvx6xVijcyQueJYSqU2mbo5IdfsuGrZOk1ILF%2B4kJY%3D&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;ts=1762513827"', 'Server': 'cloudflare', 'Vary': 'Origin, accept-encoding', 'Via': '1.1 heroku-router', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Powered-By': 'ReqRes.in - Deploy backends in 30 seconds', 'X-Reqres-Docs': 'https://reqres.in', 'X-Reqres-Message': 'This API is powered by ReqRes. Deploy your own backend in 30 seconds!', 'X-Reqres-Templates': 'https://app.reqres.in/templates', 'X-Reqres-Upgrade': 'https://app.reqres.in/upgrade', 'X-Request-Id': '103596a7-e794-08cc-2fc6-4a1668234304', 'X-Xss-Protection': '1; mode=block', 'Cache-Control': 'max-age=14400', 'cf-cache-status': 'EXPIRED', 'Content-Encoding': 'gzip', 'CF-RAY': '99ac625948fbce02-SIN'}</msg>
+<arg>HEADERS: ${resp.headers}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-07T18:10:27.184561" elapsed="0.000533"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-07T18:10:27.185532" level="INFO">BODY: {}</msg>
+<arg>BODY: ${resp.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-07T18:10:27.185182" elapsed="0.000382"/>
+</kw>
+<arg>${resp}</arg>
+<status status="PASS" start="2025-11-07T18:10:27.183153" elapsed="0.002467"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nSTATUS: ${resp.status_code}\nBODY: ${resp.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-11-07T18:10:27.185748" elapsed="0.000591"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-07T18:10:27.186734" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>404</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-07T18:10:27.186435" elapsed="0.000348"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>{}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-11-07T18:10:27.186886" elapsed="0.000326"/>
+</kw>
+<status status="PASS" start="2025-11-07T18:10:26.654395" elapsed="0.532960"/>
+</test>
+<status status="PASS" start="2025-11-07T18:10:26.477635" elapsed="0.710357"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Get User" id="s1" pass="2" fail="0" skip="0">Get User</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

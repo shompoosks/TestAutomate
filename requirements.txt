@@ -1,0 +1,19 @@
+# Core framework
+robotframework
+
+#Web testing library
+robotframework-seleniumlibrary
+
+# Browser driver manager
+webdriver-manager #==4.0.2
+
+#Core Appium
+robotframework-appiumlibrary #==2.0.0
+
+#report สวยๆ เพิ่มเติม
+robotframework-pabot #==2.16.0
+robotframework-reportportal #==5.3.4
+
+#API
+robotframework-requests
+robotframework-jsonlibrary

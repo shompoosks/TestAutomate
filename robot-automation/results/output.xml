@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.14.0rc3 on darwin)" generated="2025-11-07T10:20:34.767006" rpa="false" schemaversion="5">
+<suite id="s1" name="Login Web" source="/Users/wipaweesukkasem/Test_Automate/TestAutomate/robot-automation/tests/web-no2/login_web.robot">
+<test id="s1-t1" name="Login success" line="9">
+<kw name="Open Web Login Page" owner="web_keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-07T10:20:34.860569" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x10c09e900&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-07T10:20:34.860458" elapsed="0.000127"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--incognito</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-11-07T10:20:34.860635" elapsed="0.000050"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:34.860783" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<arg>Chrome</arg>
+<arg>options=${options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-11-07T10:20:34.860724" elapsed="1.076453"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:35.937934" level="INFO">Opening url 'https://the-internet.herokuapp.com/login'</msg>
+<arg>${url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-11-07T10:20:35.937608" elapsed="4.096516"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-11-07T10:20:40.034461" elapsed="0.340832"/>
+</kw>
+<arg>https://the-internet.herokuapp.com/login</arg>
+<status status="PASS" start="2025-11-07T10:20:34.860146" elapsed="5.515244"/>
+</kw>
+<kw name="Input User Credentials success" owner="web_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:40.376367" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>tomsmith</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-07T10:20:40.375826" elapsed="0.086458"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:40.462503" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>SuperSecretPassword!</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-07T10:20:40.462390" elapsed="0.023516"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:40.486119" level="INFO">Clicking button 'css:button[type="submit"]'.</msg>
+<arg>css:button[type="submit"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-07T10:20:40.486012" elapsed="0.640426"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:40.375661" elapsed="0.750896"/>
+</kw>
+<kw name="Verify that users can login successfully" owner="web_keywords">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>You logged into a secure area!</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-07T10:20:41.127022" elapsed="0.007494"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:41.138019" level="INFO">Current page contains text 'You logged into a secure area!'.</msg>
+<arg>You logged into a secure area!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-11-07T10:20:41.134640" elapsed="0.003417"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:41.126812" elapsed="0.011291"/>
+</kw>
+<kw name="Capture Screenshot With Timestamp" owner="web_keywords">
+<kw name="Get Time" owner="BuiltIn">
+<msg time="2025-11-07T10:20:41.138548" level="INFO">${ts} = 2025-11-07 10:20:41</msg>
+<var>${ts}</var>
+<arg>result_format=%Y-%m-%d_%H-%M-%S</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="PASS" start="2025-11-07T10:20:41.138366" elapsed="0.000204"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:41.229433" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/Login%20success_PASS_2025-11-07%2010%3A20%3A41.png"&gt;&lt;img src="screenshots/Login%20success_PASS_2025-11-07%2010%3A20%3A41.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${OUTPUT DIR}/screenshots/${TEST NAME}_PASS_${ts}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-07T10:20:41.138631" elapsed="0.090858"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:41.138215" elapsed="0.091319"/>
+</kw>
+<kw name="Click Logout Button" owner="web_keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css:a.button.secondary.radius</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-07T10:20:41.229747" elapsed="0.006664"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:41.236546" level="INFO">Clicking element 'css:a.button.secondary.radius'.</msg>
+<arg>css:a.button.secondary.radius</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-07T10:20:41.236476" elapsed="0.635108"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:41.229635" elapsed="0.642043"/>
+</kw>
+<kw name="Verify that users can logout successfully" owner="web_keywords">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>You logged out of the secure area!</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-07T10:20:41.872044" elapsed="0.006472"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:41.882641" level="INFO">Current page contains text 'You logged out of the secure area!'.</msg>
+<arg>You logged out of the secure area!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-11-07T10:20:41.878621" elapsed="0.004075"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:41.871852" elapsed="0.010898"/>
+</kw>
+<kw name="Capture Screenshot With Timestamp" owner="web_keywords">
+<kw name="Get Time" owner="BuiltIn">
+<msg time="2025-11-07T10:20:41.883148" level="INFO">${ts} = 2025-11-07 10:20:41</msg>
+<var>${ts}</var>
+<arg>result_format=%Y-%m-%d_%H-%M-%S</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="PASS" start="2025-11-07T10:20:41.883029" elapsed="0.000135"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:41.959280" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/Login%20success_PASS_2025-11-07%2010%3A20%3A41.png"&gt;&lt;img src="screenshots/Login%20success_PASS_2025-11-07%2010%3A20%3A41.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${OUTPUT DIR}/screenshots/${TEST NAME}_PASS_${ts}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-07T10:20:41.883221" elapsed="0.076110"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:41.882882" elapsed="0.076490"/>
+</kw>
+<kw name="Capture Screenshot With Timestamp" owner="web_keywords" type="TEARDOWN">
+<kw name="Get Time" owner="BuiltIn">
+<msg time="2025-11-07T10:20:41.959725" level="INFO">${ts} = 2025-11-07 10:20:41</msg>
+<var>${ts}</var>
+<arg>result_format=%Y-%m-%d_%H-%M-%S</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="PASS" start="2025-11-07T10:20:41.959644" elapsed="0.000092"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:42.039506" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/Login%20success_PASS_2025-11-07%2010%3A20%3A41.png"&gt;&lt;img src="screenshots/Login%20success_PASS_2025-11-07%2010%3A20%3A41.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${OUTPUT DIR}/screenshots/${TEST NAME}_PASS_${ts}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-07T10:20:41.959789" elapsed="0.079774"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:41.959528" elapsed="0.080086"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:34.859886" elapsed="7.179775"/>
+</test>
+<test id="s1-t2" name="Login failed Password incorrect" line="18">
+<kw name="Input User Credentials failed Password incorrect" owner="web_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:42.040156" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>tomsmith</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-07T10:20:42.040083" elapsed="0.020526"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:42.060779" level="INFO">Typing text 'Password!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>Password!</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-07T10:20:42.060690" elapsed="0.022324"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:42.083222" level="INFO">Clicking button 'css:button[type="submit"]'.</msg>
+<arg>css:button[type="submit"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-07T10:20:42.083111" elapsed="0.021166"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:42.039996" elapsed="0.064334"/>
+</kw>
+<kw name="Verify that users can login unsuccessfully when they input a correct username but wrong password" owner="web_keywords">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Your password is invalid!</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-07T10:20:42.104560" elapsed="0.662213"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:42.771102" level="INFO">Current page contains text 'Your password is invalid!'.</msg>
+<arg>Your password is invalid!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-11-07T10:20:42.766913" elapsed="0.004252"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:42.104443" elapsed="0.666781"/>
+</kw>
+<kw name="Capture Screenshot With Timestamp" owner="web_keywords">
+<kw name="Get Time" owner="BuiltIn">
+<msg time="2025-11-07T10:20:42.771648" level="INFO">${ts} = 2025-11-07 10:20:42</msg>
+<var>${ts}</var>
+<arg>result_format=%Y-%m-%d_%H-%M-%S</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="PASS" start="2025-11-07T10:20:42.771525" elapsed="0.000141"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:42.884384" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/Login%20failed%20Password%20incorrect_PASS_2025-11-07%2010%3A20%3A42.png"&gt;&lt;img src="screenshots/Login%20failed%20Password%20incorrect_PASS_2025-11-07%2010%3A20%3A42.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${OUTPUT DIR}/screenshots/${TEST NAME}_PASS_${ts}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-07T10:20:42.771729" elapsed="0.112716"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:42.771364" elapsed="0.113132"/>
+</kw>
+<kw name="Capture Screenshot With Timestamp" owner="web_keywords" type="TEARDOWN">
+<kw name="Get Time" owner="BuiltIn">
+<msg time="2025-11-07T10:20:42.884859" level="INFO">${ts} = 2025-11-07 10:20:42</msg>
+<var>${ts}</var>
+<arg>result_format=%Y-%m-%d_%H-%M-%S</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="PASS" start="2025-11-07T10:20:42.884762" elapsed="0.000108"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:42.955974" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/Login%20failed%20Password%20incorrect_PASS_2025-11-07%2010%3A20%3A42.png"&gt;&lt;img src="screenshots/Login%20failed%20Password%20incorrect_PASS_2025-11-07%2010%3A20%3A42.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${OUTPUT DIR}/screenshots/${TEST NAME}_PASS_${ts}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-07T10:20:42.884913" elapsed="0.071112"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:42.884641" elapsed="0.071434"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:42.039833" elapsed="0.916285"/>
+</test>
+<test id="s1-t3" name="Login failed Username not found" line="23">
+<kw name="Input User Credentials failed Username not found" owner="web_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:42.956536" level="INFO">Typing text 'tomholland' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>tomholland</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-07T10:20:42.956463" elapsed="0.020793"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:42.977436" level="INFO">Typing text 'Password!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>Password!</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-07T10:20:42.977340" elapsed="0.020571"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:42.998084" level="INFO">Clicking button 'css:button[type="submit"]'.</msg>
+<arg>css:button[type="submit"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-07T10:20:42.997995" elapsed="0.020532"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:42.956376" elapsed="0.062207"/>
+</kw>
+<kw name="Verify that users can login unsuccessfully when they input a username that did not exist" owner="web_keywords">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Your username is invalid!</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-07T10:20:43.018826" elapsed="0.608487"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:43.631230" level="INFO">Current page contains text 'Your username is invalid!'.</msg>
+<arg>Your username is invalid!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-11-07T10:20:43.627436" elapsed="0.003841"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:43.018697" elapsed="0.612629"/>
+</kw>
+<kw name="Capture Screenshot With Timestamp" owner="web_keywords">
+<kw name="Get Time" owner="BuiltIn">
+<msg time="2025-11-07T10:20:43.631699" level="INFO">${ts} = 2025-11-07 10:20:43</msg>
+<var>${ts}</var>
+<arg>result_format=%Y-%m-%d_%H-%M-%S</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="PASS" start="2025-11-07T10:20:43.631590" elapsed="0.000123"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:43.743085" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/Login%20failed%20Username%20not%20found_PASS_2025-11-07%2010%3A20%3A43.png"&gt;&lt;img src="screenshots/Login%20failed%20Username%20not%20found_PASS_2025-11-07%2010%3A20%3A43.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${OUTPUT DIR}/screenshots/${TEST NAME}_PASS_${ts}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-07T10:20:43.631769" elapsed="0.111373"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:43.631450" elapsed="0.111757"/>
+</kw>
+<kw name="Capture Screenshot With Timestamp" owner="web_keywords" type="TEARDOWN">
+<kw name="Get Time" owner="BuiltIn">
+<msg time="2025-11-07T10:20:43.743536" level="INFO">${ts} = 2025-11-07 10:20:43</msg>
+<var>${ts}</var>
+<arg>result_format=%Y-%m-%d_%H-%M-%S</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="PASS" start="2025-11-07T10:20:43.743450" elapsed="0.000096"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-07T10:20:43.841668" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/Login%20failed%20Username%20not%20found_PASS_2025-11-07%2010%3A20%3A43.png"&gt;&lt;img src="screenshots/Login%20failed%20Username%20not%20found_PASS_2025-11-07%2010%3A20%3A43.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${OUTPUT DIR}/screenshots/${TEST NAME}_PASS_${ts}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-07T10:20:43.743586" elapsed="0.098137"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:43.743335" elapsed="0.098436"/>
+</kw>
+<status status="PASS" start="2025-11-07T10:20:42.956232" elapsed="0.885577"/>
+</test>
+<status status="PASS" start="2025-11-07T10:20:34.767451" elapsed="9.074596"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login Web" id="s1" pass="3" fail="0" skip="0">Login Web</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
